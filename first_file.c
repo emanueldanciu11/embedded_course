@@ -11,4 +11,8 @@ added stuff
 
 i made this modif in github
 >>>>>>> c8259bf4135a879ceac3641fc3ca46ec1484275f
+<<<<<<< HEAD
 i made rhis moddification in source tree
+=======
+i made this moddification in cmd
+>>>>>>> 1918d3061fef0e00f03e035db4f8a933ea0e4552
