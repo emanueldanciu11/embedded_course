@@ -270,4 +270,6 @@ I2C1_RegDef_t *pI2C1 = 		I2C1;
 #define FLAG_SET        SET
 #define FLAG_RESET      RESET
 
+#include "stm32f401xx_gpio_drivers.h"
+
 #endif /* INC_STM32F401XX_H_ */
