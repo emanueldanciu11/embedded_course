@@ -1,6 +1,7 @@
 /*
  * stm32f401xx.h
  *
+ * 
  *  Created on: Aug 31, 2024
  *      Author: Emi
  */
@@ -97,6 +98,17 @@
 #define GPIOH_CLKEN()				(RCC -> AHB1ENR |= (1<<7))
 
 /*
+ *  GPIO Clock Reset Macros
+ */
+
+#define GPIOA_REG_RESET()			do{(RCC -> AHB1RSTR |= (1<<0));		(RCC -> AHB1RSTR &= ~(1<<0)); }while(0)
+#define GPIOB_REG_RESET()			do{(RCC -> AHB1RSTR |= (1<<1));		(RCC -> AHB1RSTR &= ~(1<<1)); }while(0)
+#define GPIOC_REG_RESET()			do{(RCC -> AHB1RSTR |= (1<<2));		(RCC -> AHB1RSTR &= ~(1<<2)); }while(0)
+#define GPIOD_REG_RESET()			do{(RCC -> AHB1RSTR |= (1<<3));		(RCC -> AHB1RSTR &= ~(1<<3)); }while(0)
+#define GPIOE_REG_RESET()			do{(RCC -> AHB1RSTR |= (1<<4));		(RCC -> AHB1RSTR &= ~(1<<4)); }while(0)
+#define GPIOH_REG_RESET()			do{(RCC -> AHB1RSTR |= (1<<5));		(RCC -> AHB1RSTR &= ~(1<<5)); }while(0)
+
+/*
  *  I2C Clock Enable Macros
  */
 
@@ -180,9 +192,7 @@ typedef struct
 	__vo uint32_t ODR;				//GPIO port output data register				Address offset: 0x14
 	__vo uint32_t BSRR;				//GPIO port bit set/reset register				Address offset: 0x18
 	__vo uint32_t LCKR;				//GPIO port configuration lock register			Address offset: 0x1C
-	__vo uint32_t AFRL;				//GPIO alternate function low register			Address offset: 0x20
-	__vo uint32_t AFRH;				//GPIO alternate function HHIGH register		Address offset: 0x24
-
+	__vo uint32_t AFR[2];				//GPIO alternate function low register			Address offset: 0x20
 }GPIO_RegDef_t;
 
 /*
