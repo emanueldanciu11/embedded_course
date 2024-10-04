@@ -36,7 +36,7 @@
 *ARM CORTEX M4 NVIC_ICERx Register Adresses
 */
 
-#define NO_PR_BITS_IMPLEMENTED
+#define NO_PR_BITS_IMPLEMENTED      4
 #define NVIC_PR_BASE_ADDR           ((__vo uint32_t*)0xE000E400)
 
 /***************************************************STOP:Processor specific details**********************************************/
@@ -346,6 +346,24 @@ extern I2C1_RegDef_t *pI2C1;*/
 #define IRQ_NO_EXTI4                10
 #define IRQ_NO_EXTI9_5              23
 #define IRQ_NO_EXTI15_10            40
+
+/*
+ * Generic Macros
+ */
+
+#define NVIC_IRQ_PRI0               0
+#define NVIC_IRQ_PRI1               1
+#define NVIC_IRQ_PRI2               2
+#define NVIC_IRQ_PRI3               3
+#define NVIC_IRQ_PRI4               4
+#define NVIC_IRQ_PRI5               5
+#define NVIC_IRQ_PRI6               6
+#define NVIC_IRQ_PRI7               7
+#define NVIC_IRQ_PRI8               8
+#define NVIC_IRQ_PRI9               9
+#define NVIC_IRQ_PRI15              15
+
+
 
 /*
  * Generic Macros

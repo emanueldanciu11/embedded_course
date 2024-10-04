@@ -343,7 +343,7 @@ void GPIO_ToggleOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber)
  */
 
 
-void GPIO_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi)
+void GPIO_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi) //enable de interrupt line in ENVIC
 {
     if(EnorDi == ENABLE)
     {
@@ -393,12 +393,33 @@ void GPIO_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi)
  * @Note        - None
  *
  *****************************************************************/
-
 void GPIO_IRQPriorityConfig(uint8_t IRQNumber, uint32_t IRQPriority)
 {
     uint8_t iprx = IRQNumber / 4; // interrupt priority register number
     uint8_t iprx_section = IRQNumber % 4; // interrupt priority register bit section(4 sections each, 4 IRQ can be configured per register
 
-    uint8_t shift_amount = (8 * iprx_section) + (8 - NO_PR_BITS_IMPLEMENTED);
+    uint8_t shift_amount = (8 * iprx_section) + (8 - NO_PR_BITS_IMPLEMENTED);   //only 4 bits of the 8 bit section are used(0000XXXX-0000XXXX-0000XXX-0000XXXX)
     *(NVIC_PR_BASE_ADDR + iprx) |= (IRQPriority << shift_amount);
+}
+
+/*****************************************************************
+ * @fn          - GPIO_IRQHandling
+ *
+ * @brief       - IRQ handeling
+ *
+ * @param[in]   - Pin number
+ * 
+ * @return      - none
+ *
+ * @Note        - None
+ *
+ *****************************************************************/
+void GPIO_IRQHandling(uint8_t PinNumber)
+{
+    //clear the exti pr register corresponding to the pin number
+    if(EXTI->PR & (1<< PinNumber))
+    {
+        //clear
+        EXTI->PR |= (1 << PinNumber);
+    }
 }
