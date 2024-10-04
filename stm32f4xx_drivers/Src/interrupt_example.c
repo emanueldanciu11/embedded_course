@@ -23,7 +23,7 @@ int main()
     GPIO_Init(&GpioLed);
 
     GpioBtn.pGPIOx = GPIOD; // CHANGE WITH THE RIGHT PORT
-    GpioBtn.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_3; //CHANGE WITH THE RIGHT PIN
+    GpioBtn.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_13; //CHANGE WITH THE RIGHT PIN
     GpioBtn.GPIO_PinConfig.GPIO_PinMode = GPIO_MODE_IT_FT;
     GpioBtn.GPIO_PinConfig.GPIO_PinSpeed = GPIO_SPEED_FAST;
     GpioBtn.GPIO_PinConfig.GPIO_PinPuPdControl = GPIO_PIN_PU;
@@ -31,7 +31,7 @@ int main()
     GPIO_PeriClockControl(GPIOD, ENABLE);
     GPIO_Init(&GpioBtn);
 
-    GPIO_WriteToOutputPin(GPIOA,GPIO_PIN_NO_5,GPIO_PIN_RESET);
+    GPIO_WriteToOutputPin(GPIOA,GPIO_PIN_NO_1,GPIO_PIN_RESET);
 
     GPIO_IRQPriorityConfig(IRQ_NO_EXTI15_10, NVIC_IRQ_PRI15);
     GPIO_IRQInterruptConfig(IRQ_NO_EXTI15_10, ENABLE);
@@ -41,6 +41,7 @@ int main()
         GpioBtn.pGPIOx->IDR |= 1 << GpioBtn.GPIO_PinConfig.GPIO_PinNumber;
         delay();
         GpioBtn.pGPIOx->IDR |= 1 << GpioBtn.GPIO_PinConfig.GPIO_PinNumber;
+        delay();
 
     }
 
@@ -51,5 +52,5 @@ void EXTI15_10_IRQHandler(void)
 {       
           //  delay();
         GPIO_IRQHandling(GPIO_PIN_NO_1);
-        GPIO_ToggleOutputPin(GPIOD ,GPIO_PIN_NO_3);
+        GPIO_ToggleOutputPin(GPIOD ,GPIO_PIN_NO_13);
 }
