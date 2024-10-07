@@ -343,8 +343,8 @@ void GPIO_ToggleOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber)
  */
 
 
-void GPIO_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi) //enable de interrupt line in ENVIC(IRQNumber coresponds to the pin number)
-{
+void GPIO_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi) //enable de interrupt line in ENVIC(each EXTI line corresponds to an interrupt, interrups are oin number specific, but ports differ)                
+{                                                               //                                     eg: EXTI0 correspond to PIN0 for PORTS A, B, C, D,... all ports with pin 0 will use the same IRQ)
     if(EnorDi == ENABLE)
     {
         if(IRQNumber <= 31)
