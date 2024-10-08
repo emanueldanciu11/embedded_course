@@ -31,7 +31,7 @@ int main()
    
 
     /*while(1)
-    {
+
         if(GPIO_ReadFromInputPin(GPIOA, GPIO_PIN_NO_2)) //CHANGE WITH THE RIGHT PIN AND PORT
         {
             delay();
@@ -44,5 +44,5 @@ int main()
             GPIO_ToggleOutputPin(GPIOA, GPIO_PIN_NO_1); //CHANGE WITH THE RIGHT PIN AND PORT
     }
     
-
+ 
 }
