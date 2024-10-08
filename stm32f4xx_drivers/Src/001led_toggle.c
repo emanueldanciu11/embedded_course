@@ -28,7 +28,7 @@ int main()
     GPIO_PeriClockControl(GPIOD, ENABLE);
     GPIO_Init(&GpioBtn);
 
- 
+   
 
     /*while(1)
     {
